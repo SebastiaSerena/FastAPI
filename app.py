@@ -13,7 +13,7 @@ from langchain.chains.summarize import load_summarize_chain
 
 import yaml
 
-with open(conf.yml) as fh:
+with open("conf.yml") as fh:
     config = yaml.safe_load(fh)
 
 OPENAI_API_KEY = config["API_KEY"]["VALUE"]
