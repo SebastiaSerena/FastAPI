@@ -7,7 +7,7 @@
 
 J'ai mis en place une API à l'aide de FastAPI, permettant l'extraction d'informations et la génération de résumés automatiques de papiers de recherche. Pour ce faire, j'ai utilisé un Large Language Model grâce à la librairie Langchain.
 
-Commandes respectives pour installer les librairies necessaires et lancer le modèle:
+Commandes respectives pour installer les librairies necessaires et executer le programme:
 
 ```
 pip install -r requirement.txt
