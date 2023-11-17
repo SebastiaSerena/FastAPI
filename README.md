@@ -16,6 +16,12 @@ uvicorn app:app --reload
 
 ```
 
+## Vérification du Texte d'Entrée
+
+S'assurer que le texte d'entrée fournis est bien formé et ne contient pas de caractères spéciaux ou de contrôle inattendus. 
+Examiner le texte pour détecter tout caractère suspect.
+
+
 ## Prérequis
 
 Pour pouvoir executer le code, il faudra absolument créer une API KEY sur OpenAI et rentrer sa valeur dans le fichier de configuration **conf.yml**
