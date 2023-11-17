@@ -45,6 +45,11 @@ class TexteRecherche(BaseModel):
 
 @app.post("/extraire-informations")
 def extraire_informations(texte_recherche: TexteRecherche):
+    
+    original_text = texte_recherche.texte
+    texte = re.sub(r'[\x00-\x1F\x7F-\x9F]', '', original_text)
+    texte = texte.encode('utf-8', 'ignore').decode('utf-8')
+
     try:
         # Utilisation de langchain pour extraire des informations.
         extraction_prompt = PromptTemplate(
@@ -55,7 +60,7 @@ def extraire_informations(texte_recherche: TexteRecherche):
         
         extraction_chain = LLMChain(llm=llm, prompt=extraction_prompt)
 
-        informations_extraites = extraction_chain.run(texte_recherche.texte)
+        informations_extraites = extraction_chain.run(texte)
 
         return informations_extraites
     
@@ -66,6 +71,11 @@ def extraire_informations(texte_recherche: TexteRecherche):
 
 @app.post("/resumer-papier")
 def resumer_papier(texte_recherche: TexteRecherche):
+
+    original_text = texte_recherche.texte
+    texte = re.sub(r'[\x00-\x1F\x7F-\x9F]', '', original_text)
+    texte = texte.encode('utf-8', 'ignore').decode('utf-8')
+    
     try:
         # Utilisation de langchain pour générer un résumé
         
@@ -82,7 +92,7 @@ def resumer_papier(texte_recherche: TexteRecherche):
         #resume_chain = load_summarize_chain(llm, 
                              #chain_type="map_reduce")
         
-        resume_genere = resume_chain.run(texte_recherche.texte)
+        resume_genere = resume_chain.run(texte)
 
         return {"resume": resume_genere}
     
