@@ -9,7 +9,6 @@ from langchain.chains import LLMChain
 from langchain.chains.summarize import load_summarize_chain
 
 # Recuperation de la valeur de l'API KEY
-
 import yaml
 
 with open("conf.yml") as fh:
@@ -30,6 +29,9 @@ app = FastAPI()
 # Text-davinci-003 est le modèle qui a le score le plus élevé sur les cotes de préférence humaine.
 # Son entrainement génère généralement un résultat moins toxique et plus véridique.
 # Ce modèle propose également de nouvelles fonctionnalités permettant de mieux gérer les instructions les plus complexes.
+
+# Pour s’assurer que les informations extraites sont pertinentes et ciblées, et que le modèle génère des résumés plus complets, j'ai fixé une taille maximale de tokens à 256.
+# En fixant le paramètre 'temperature' à zéro, j'assure une coherance des résultats.
 
 llm = OpenAI(model_name='text-davinci-003', 
              temperature=0, 
