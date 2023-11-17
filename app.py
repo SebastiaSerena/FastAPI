@@ -27,6 +27,11 @@ os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 app = FastAPI()
 
 # Choix du modele OpenAI
+
+# Text-davinci-003 est le modèle qui a le score le plus élevé sur les cotes de préférence humaine.
+# Son entrainement génère généralement un résultat moins toxique et plus véridique.
+# Ce modèle propose également de nouvelles fonctionnalités permettant de mieux gérer les instructions les plus complexes.
+
 llm = OpenAI(model_name='text-davinci-003', 
              temperature=0, 
              max_tokens = 256,
@@ -90,7 +95,3 @@ if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
     
     
-    
-    
-# Lors des tests il faudrait s'assurer qu'il n'y ait pas de \n dans le texte.
-# Pour de meilleurs resultats, le texte doit etre sous la forme en seul paragraphe.
