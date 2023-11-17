@@ -3,7 +3,6 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import langchain
 
-
 from langchain.prompts import PromptTemplate
 from langchain.llms import OpenAI
 from langchain.chains import LLMChain
