@@ -89,6 +89,8 @@ def resumer_papier(texte_recherche: TexteRecherche):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors de la génération de résumé : {str(e)}")
 
+
+
 # La documentation automatique avec FastAPI est disponible sur http://127.0.0.1:8000/docs ou http://127.0.0.1:8000/redoc
 
 if __name__ == "__main__":
