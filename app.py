@@ -9,10 +9,19 @@ from langchain.llms import OpenAI
 from langchain.chains import LLMChain
 from langchain.chains.summarize import load_summarize_chain
 
+# Recuperation de la valeur de l'API KEY
+
+import yaml
+
+with open(conf.yml) as fh:
+    config = yaml.safe_load(fh)
+
+OPENAI_API_KEY = config["API_KEY"]["VALUE"]
+
 # Ajout de l'api key dans l'environnemnt.
 import os
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 # Creation de l'application avec FastAPI().
 app = FastAPI()
@@ -21,7 +30,7 @@ app = FastAPI()
 llm = OpenAI(model_name='text-davinci-003', 
              temperature=0, 
              max_tokens = 256,
-             api_key=os.getenv("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"))
+             api_key=os.getenv(OPENAI_API_KEY))
 
 class TexteRecherche(BaseModel):
     texte: str
