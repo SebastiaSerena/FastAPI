@@ -45,6 +45,8 @@ class TexteRecherche(BaseModel):
 
 @app.post("/extraire-informations")
 def extraire_informations(texte_recherche: TexteRecherche):
+
+    # Détecter automatiquement des caractères speciaux indésirables
     
     original_text = texte_recherche.texte
     texte = re.sub(r'[\x00-\x1F\x7F-\x9F]', '', original_text)
@@ -72,6 +74,8 @@ def extraire_informations(texte_recherche: TexteRecherche):
 @app.post("/resumer-papier")
 def resumer_papier(texte_recherche: TexteRecherche):
 
+    # Détecter automatiquement des caractères speciaux indésirables
+    
     original_text = texte_recherche.texte
     texte = re.sub(r'[\x00-\x1F\x7F-\x9F]', '', original_text)
     texte = texte.encode('utf-8', 'ignore').decode('utf-8')
